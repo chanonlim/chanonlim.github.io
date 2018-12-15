@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>ASCII to hex converter</title>
+</head>
+<body style="padding:1rem">
+<center><h1>ASCII to hex converter</h1></center>
+<div style="margin-left:8rem;display:inline-block"><span style="display:inline-block">Input: </span><br>
+<textarea id="input" onkeypress="update()" onkeydown="update()" onkeyup="update()" style="width:400px;height:300px;display:inline-block"></textarea>
+<textarea id="output" style="width:400px;height:300px;display:inline-block;margin-left:6rem" disabled></textarea>
+<script>
+function chunk(str, n) {
+    var ret = [];
+    var i;
+    var len;
+
+    for(i = 0, len = str.length; i < len; i += n) {
+       ret.push(str.substr(i, n))
+    }
+
+    return ret
+};
+function ascii_to_hexa(str)
+  {
+	var arr1 = [];
+	for (var n = 0, l = str.length; n < l; n ++) 
+     {
+		var hex = Number(str.charCodeAt(n)).toString(16);
+		arr1.push(hex);
+	 }
+	return arr1.join('');
+   }
+function update() {
+	document.getElementById("output").value = chunk(ascii_to_hexa(document.getElementById("input").value), 2).join(' ')
+}
+</script>
+</body>
+</html>
